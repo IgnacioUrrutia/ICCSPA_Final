@@ -1,0 +1,239 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-sacale=1.0">
+    <title>nosotros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <!--boostrap css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <!-- archivo js  -->
+    <script src="{% static 'js/script.js' %}" defer></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body onload="activateCurrentLink()" >
+    <!--barra menu-->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand me-auto" href="{% url 'index' %}"><img src="{% static 'img/logo.jpg' %}" style="border-radius: 15px"
+        /></a>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src="{% static 'img/logo-largo1.png' %}"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link " href="{% url 'index' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="{% url 'galeria' %}">Galeria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="{% url 'nosotros' %}">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="{% url 'contacto' %}">Contacto</a>
+                        </li>
+                        {% if user.is_authenticated and user.is_staff %}
+    <li class="nav-item">
+        <a class="nav-link mx-lg-2" href="{% url 'producto_list' %}">Inventario</a>
+    </li>
+{% endif %}
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <a href="{% url 'carrito' %}" class="me-3">
+                    <i class='bx bx-cart' style="font-size: 35px;"></i>
+                </a>
+            </div>
+            {% if user.is_authenticated %}
+            <a href="{% url 'cerrar_sesion' %}" class="login-button">Cerrar sesion</a>
+            {% else %}
+            <a href="{% url 'iniciar_sesion'%}" class="login-button">Iniciar sesion</a>
+            <button class="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="offcanvas" 
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar" 
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+            </span>
+            </button>
+            {% endif %}
+        </div>
+    </nav>
+    <!--barra menu-->
+    <section class="nosotros">
+        <div class="content_nosotros">
+            <h1>nosotros</h1>
+        </div>
+        <div class="wave" id="wave1" style="--i:1;"></div>
+        <div class="wave" id="wave2" style="--i:2;"></div>
+        <div class="wave" id="wave3" style="--i:3;"></div>
+        <div class="wave" id="wave4" style="--i:4;"></div>
+    </section>
+
+    <div class="services">
+        <h1>Nuestra Empresa</h1>
+
+        <div class="scontent">
+            <div class="scards">
+                <div class="scard">
+                    <div class="sbox">
+                        <h3>Sobre Nosotros</h3>
+                        <p>Somos un negocio familiar dedicado al cuidado integral de piscinas, ofreciendo servicios de
+                            limpieza, mantenimiento, revestimiento, pintado, servicio técnico y venta de productos
+                            químicos y artículos relacionados desde 2020.</p>
+                    </div>
+                </div>
+
+                <div class="scard">
+                    <div class="sbox">
+                        <h3>Mision</h3>
+                        <p>Ofrecer productos químicos de primera calidad y servicios expertos para mantener piscinas en
+                            condiciones óptimas, creando verdaderos paraísos acuáticos que reflejen el estilo único de
+                            nuestros clientes.</p>
+                    </div>
+                </div>
+
+                <div class="scard">
+                    <div class="sbox">
+                        <h3>Vision</h3>
+                        <p>Proporcionar servicios de alta calidad para el cuidado y
+                            mantenimiento de piscinas. Buscamos ser reconocidos por la excelencia en nuestro trabajo y
+                            la satisfacción plena de nuestros
+                            clientes.
+                        </p>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="video">
+        <h4>
+            <a href="https://www.youtube.com/watch?v=ogYIj3fKfZ0&amp;t=1s" target="_blank">
+                <em><br>Haz clic aquí para recomendaciones sobre la mantención de piscinas</em>
+            </a>
+        </h4>
+    </div>
+    <div class="clima-mapa">
+        <div class="container_gota">
+            <div class="drop" style="--clr: #84e9ec;">
+                <div id="weather">
+                    <h2><br> <br>Clima en Chile</h2>
+                    <form id="locationForm">
+                        <input type="text" id="locationInput" placeholder="Ingrese una ciudad o región en Chile">
+                        <input type="submit" value="Obtener Clima">
+                    </form>
+                    <p id="temperature">Temperatura: </p>
+                    <p id="city">Ciudad: </p>
+                    <p id="region">Región: </p>
+                </div>
+            </div>
+
+
+        </div>
+        <div>
+        <h4 style="font-size: 20px; color: #01036d; margin-bottom: 10px; margin-left: 40px;">Dirección Oficina Central :</h4>
+        <iframe class="mapa_posicion"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.6846286342575!2d-70.75066158882191!3d-33.45752207327568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c3a695559869%3A0x932cbd9826896649!2sJaime%20Eyzaguirre%20463%2C%209071468%20Pudahuel%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1715651268681!5m2!1ses!2scl"
+            width="400" height="300"></div>
+        </iframe>
+    </div>
+
+    </div>
+
+
+    <script>
+        document.getElementById("locationForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const location = document.getElementById("locationInput").value;
+            getWeather(location);
+        });
+
+        function getWeather(location) {
+            fetch(`http://api.weatherapi.com/v1/current.json?key=fd2db5e4a75d4af886252202241405&q=${location}`)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("temperature").innerText = "Temperatura: " + data.current.temp_c + "°C";
+                    document.getElementById("city").innerText = "Ciudad: " + data.location.name;
+                    document.getElementById("region").innerText = "Región: " + data.location.region;
+                    document.getElementById("country").innerText = "País: " + data.location.country;
+                    document.getElementById("condition").innerText = "Condición: " + data.current.condition.text;
+                    document.getElementById("icon").src = "https:" + data.current.condition.icon;
+                    document.getElementById("icon").alt = "Icono del clima: " + data.current.condition.text;
+                })
+                .catch(error => console.error("Error al obtener los datos del clima:", error));
+        }
+    </script>
+    <script>
+        let wave1 = document.getElementById('wave1');
+        let wave2 = document.getElementById('wave2');
+        let wave3 = document.getElementById('wave3');
+        let wave4 = document.getElementById('wave4');
+
+        window.addEventListener('scroll', function () {
+            let value = window.scrollY;
+            wave1.style.backgroundPositionX = 400 + value * 4 + 'px';
+            wave2.style.backgroundPositionX = 300 + value * -4 + 'px';
+            wave3.style.backgroundPositionX = 200 + value * 2 + 'px';
+            wave4.style.backgroundPositionX = 100 + value * -2 + 'px';
+
+        })
+    </script>
+    <!--boostrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+        <footer class="footer">
+            <ul class="social-icon">
+                <li class="icon-elem">
+                    <a href="" class="icon">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                </li>
+                <li class="icon-elem">
+                    <a href="" class="icon">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                </li>
+                <li class="icon-elem">
+                    <a href="" class="icon">
+                        <ion-icon name="logo-tiktok"></ion-icon>
+                    </a>
+                </li>
+                <li class="icon-elem">
+                    <a href="" class="icon">
+                        <ion-icon name="logo-whatsapp"></ion-icon>
+                    </a>
+                </li>
+            </ul>
+            <p class="text1"> 2024 | Todos los derechos reservados</p>
+            <p class="text2">Ignacio Urrutia | Javiera Olea | Fernando Sanchez</p>
+        </footer>
+        <!--footer-->
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!--footer-->
+</body>
+
+</html>
